@@ -4,7 +4,7 @@
     const SRC_DIR = path.resolve(__dirname, "./client/src");
       // path to your jsx files
     module.exports = {
-      entry: SRC_DIR + '/index.jsx',
+      entry: SRC_DIR + '/index.js',
         // file to be transpiled - main component
       output: {
         path: DIST_DIR,
@@ -21,7 +21,7 @@
             include: SRC_DIR,
             loader: 'babel-loader',
             query: {
-              presets: ['react', 'babel-preset-env']
+              presets: ['react', 'es2015']
             }
           }
         ]

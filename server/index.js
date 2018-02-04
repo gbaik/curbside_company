@@ -1,24 +1,25 @@
-import {} from 'dotenv/config';
-import express from 'express';
-import bodyParser from 'body-parser';
-import helmet from 'helmet';
-import path from 'path';
-
+const bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
 const app = express();
 
-// Curbside.setAppId("CURBSIDE_APP_ID");
-// Curbside.setUsageToken("CURBSIDE_USAGE");
+const db = './db/index.js';
 
-app.use(helmet());
-app.use(express.static(__dirname + './../client/dist'));
+const port = process.env.PORT || 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(express.static(__dirname + './../client/dist'));
 
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/../client/dist/index.html'));
 });
 
-app.listen(8080, () => {
-  console.log('listening on port 8080');
+app.post('/search', function (req, res) {
+  res.end('');
 });
 
+
+app.listen(port, _ => {
+  console.log(`Server connected to port number: ${port}`);
+});
