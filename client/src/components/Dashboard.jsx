@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 const Search = () => (
-  <div className="ui loading search">
+  <div className="ui search">
     <div className="ui icon input">
-      <input className="prompt" type="text" placeholder="Search..."/>>
+      <input className="prompt" type="text" placeholder="Search..."/>
       <i className="search icon"></i>
     </div>
     <div className="results"></div>
@@ -16,8 +16,8 @@ const Table = () => (
   <table class="ui celled table"> 
     <thead> 
       <tr> 
-        <th>Header</th> 
-        <th>Header</th> 
+        <th>Pick-up Location:</th> 
+        <th>ETA:</th> 
       </tr> 
     </thead>
     <tbody>
@@ -37,28 +37,23 @@ const Table = () => (
   </table>
 )
 
-const image = 'https://geology.com/world/world-map-clickable.gif';
-
 class Dashboard extends React.Component{
   constructor(props) { 
-    super(props);
-    
+    super(props);    
   }
 
   render() {
     return (
-      <div>
-        <div class="ui large header"> Truck #123: </div>
-        <div className="ui two column centered grid">
-          <Search className="column" />
-          <div className="column">
-            <div className="ui grid">
-              <Table className="row" />
-              <div className="six wide column"><img src={image}/></div>
-              <div className="six wide column"><img src={image}/></div>
-            </div>
+      <div className="ui grid">
+        <div className="two column sixteen width">
+          <div className="column ten width">
+            <Search />
           </div>
-        </div>
+          <div className="column">
+            <div className="ui large header"> Truck #123: </div>
+          </div>
+              <Table />
+          </div>
       </div>
     )
   }
